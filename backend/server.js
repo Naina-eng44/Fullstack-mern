@@ -16,6 +16,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/studentDB')
 // model
 const Student = require('./models/Student');
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({ message: 'Backend API is running', status: 'ok' });
+});
+
 // GET API
 app.get('/students', async (req, res) => {
   const data = await Student.find();
