@@ -23,15 +23,23 @@ app.get('/', (req, res) => {
 
 // GET API
 app.get('/students', async (req, res) => {
-  const data = await Student.find();
-  res.json(data);
+  try {
+    const data = await Student.find();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // POST API
 app.post('/students', async (req, res) => {
-  const newStudent = new Student(req.body);
-  await newStudent.save();
-  res.json(newStudent);
+  try {
+    const newStudent = new Student(req.body);
+    await newStudent.save();
+    res.json(newStudent);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // server
