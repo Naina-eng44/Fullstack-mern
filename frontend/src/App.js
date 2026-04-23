@@ -37,6 +37,15 @@ function App() {
       .catch(err => console.log(err));
   };
 
+  // DELETE API
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:5000/students/${id}`)
+      .then(res => {
+        setStudents(students.filter(s => s._id !== id));
+      })
+      .catch(err => console.log(err));
+  };
+
   return (
     <div className="container">
       <h2> Student Management</h2>
@@ -72,6 +81,12 @@ function App() {
         {students.map((s, i) => (
           <li key={i}>
             <strong>{s.name}</strong> - {s.course} ({s.age})
+            <button 
+              onClick={() => handleDelete(s._id)}
+              style={{ marginLeft: '10px', backgroundColor: '#dc3545', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer', borderRadius: '4px' }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
