@@ -63,6 +63,18 @@ npm start
 ### Frontend Output
 ![Frontend Output](frontend/src/outputs/frontend-output.png)
 
+---
+
+## Deployment
+
+### Frontend Deployment (Vercel)
+
+1. Push your code to GitHub repository
+2. Go to [Vercel](https://vercel.com)
+3. Import your GitHub repository
+4. Set build command: `cd frontend && npm run build`
+5. Set output directory: `frontend/build`
+6. Deploy!
 
 ---
 

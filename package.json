@@ -1,0 +1,13 @@
+{
+  "name": "fullstack",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build"
+  }
+}
