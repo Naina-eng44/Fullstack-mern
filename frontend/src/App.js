@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   const [students, setStudents] = useState([]);
   const [form, setForm] = useState({
     name: '',
@@ -20,7 +21,7 @@ function App() {
   const fetchStudents = () => {
     setLoading(true);
     setError(null);
-    axios.get('http://localhost:5000/students')
+    axios.get(`${API_URL}/students`)
       .then(res => {
         console.log('Students fetched:', res.data);
         setStudents(res.data);
@@ -50,7 +51,7 @@ function App() {
       return;
     }
 
-    axios.post('http://localhost:5000/students', form)
+    axios.post(`${API_URL}/students`, form)
       .then(res => {
         console.log('Student added:', res.data);
         setStudents([...students, res.data]);
@@ -65,7 +66,7 @@ function App() {
 
   // DELETE API
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/students/${id}`)
+    axios.delete(`${API_URL}/students/${id}`)
       .then(res => {
         console.log('Student deleted:', res.data);
         setStudents(students.filter(s => s._id !== id));
